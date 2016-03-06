@@ -1,0 +1,10 @@
+<h1><%=@survey.title%></h1>
+	<% @questions.each do |question| %>
+ 		<form>
+ 		<%=question.content%><br>
+ 			<%question.options.each do |option| %>
+ 				<input type="radio" value="<%=option.text%>"><%=option.text%><br>
+ 			<%end%>
+ 		</form>
+	<%end%>
+	<input type="submit" value="Submit" class="button">

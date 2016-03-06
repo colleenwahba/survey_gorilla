@@ -11,7 +11,7 @@ post '/sessions/new' do
   @user = User.find_by_email(params[:email])
   if @user && @user.authenticate(params[:password_plaintext])
     session[:user_id] = @user.id
-    redirect "/users/#{@user.id}"
+    redirect "/home"
   else
     session.delete(:user_id)
     @error = "Please check your email address and password and try again."

@@ -1,0 +1,8 @@
+<p>You are logged in</p>
+<p>Welcome <%= @user.email %><br>
+
+<% @surveys.each do |survey| %>
+<a href="/surveys/<%=survey.id%>"><%= survey.title %></a><br>
+<%end%>
+<a href="/surveys/new">Create a survey</a><br>
+<a href="/surveys">Take a survey</a>
