@@ -3,8 +3,19 @@
  		<form>
  		<%=question.content%><br>
  			<%question.options.each do |option| %>
- 				<input type="radio" value="<%=option.text%>"><%=option.text%><br>
+ 				<input type="radio" name="placeholder"><%=option.text%><br>
  			<%end%>
  		</form>
 	<%end%>
+	<%if @survey.owner_id == session[:user_id] %>
+	<a href="/surveys/<%=@survey.id%>/questions/new">Add Questions</a>
+	<!-- <form action="/surveys/<%=@survey.id%>/quesitons/new" method="post">
+		<input type="submit" value="Add Questions">
+	</form> --><br>
+	<form action="/surveys/<%=@survey.id%>/quesitons/new" method="post">
+		<input type="hidden" action="_method" value="delete">
+		<input type="submit" value="Delete Survey">
+	</form>
+	<% else %>
 	<input type="submit" value="Submit" class="button">
+	<% end %>

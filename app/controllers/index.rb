@@ -13,3 +13,7 @@ get '/home' do
   @surveys = Survey.all
   erb :home
 end
+
+# get '/instrux' do 
+# 	erb :instrux
+# end

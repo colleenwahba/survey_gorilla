@@ -1,7 +1,9 @@
+Please select a title for your survey 
 
-<body>
-	Question: <input type="text" name="name" value="">
-	<form id="options" action="index.html" method="post">
-		</form>
-	<button id="add-option">Add option</button>
-</body>
+<form action="/surveys" method="post">
+  Survey Title:<br>
+  <input type="text" name="title"><br>
+  <input type="submit" value="Create survey">
+</form>
+
+
