@@ -1,0 +1,16 @@
+<div class="container">
+
+<h4 align="center"><%=@survey.title%></h4>
+<hr/>
+<form action="/surveys/<%=@survey.id%>/responses" method="post">
+ 	<div class="jumbotron">
+	<% @questions.each do |question| %>
+ 		<div class="question_header"><%=question.content%></div>
+ 			<%question.options.each do |option| %>
+ 				<input type="radio" name="choice[<%=option.question_id%>]" value="<%=option.id%>"><%=option.text%><br>
+ 			<%end%>
+	<%end%>
+	<input type="submit" value="Submit" class="button">
+</form>
+</div>
+
