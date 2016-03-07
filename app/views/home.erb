@@ -2,7 +2,7 @@
 <div class="container">
 	<div class="jumbotron" style="padding: 30px">
 <h4>Welcome <%= @user.email %>!</h4>
-<h5>Here are your surveys below</h5>
+<h5>Here are your surveys below. You can also check out your responses <a href="/responses">here.</a></h5>
 <%if @user.surveys.empty? %>
 You haven't created any surveys yet. Create one below!
 <% else%>

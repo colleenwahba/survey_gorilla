@@ -2,7 +2,7 @@
 	<div class="jumbotron">
 <h4><u>Please select a survey from the list below<u></h4>
 <% @surveys.each do |survey| %>
-	<% if survey.owner_id != session[:user_id] && !@user.user_surveys.include?(UserSurvey.find(survey.id)) == [] %> 
+	<% if survey.owner_id != session[:user_id] %> 
 <a href="/surveys/<%=survey.id%>/responses/new"><%= survey.title %></a><br>
 <%end%>
 <%end%>
