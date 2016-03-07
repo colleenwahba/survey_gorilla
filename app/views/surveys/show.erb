@@ -1,21 +1,36 @@
-<h1><%=@survey.title%></h1>
+<div class="container">
+<h1 align="center"><%=@survey.title%></h1>
+<hr/>
+ 	<div class="jumbotron">
 	<% @questions.each do |question| %>
- 		<form>
- 		<%=question.content%><br>
+ 		<div class="question_header"><%=question.content%></div>
+ 			<% if @survey.owner_id == session[:user_id] %>
  			<%question.options.each do |option| %>
  				<input type="radio" name="placeholder"><%=option.text%><br>
  			<%end%>
- 		</form>
+ 			<form action="/surveys/<%=@survey.id%>/questions/<%=question.id%>/edit" method="get">
+			<input class="edit btn btn-secondary" type="submit" value="Edit">
+			</form>
+			
+			<form action="/surveys/<%=@survey.id%>/questions/<%=question.id%>" method="post">
+			<input type="hidden" name="_method" value="delete">
+			<input type="hidden" name="question_id" value="<%=question.id%>">
+			<input class="delete btn btn-secondary"  type="submit" value="Del">	
+		</form>
+		<% else %>
+ 			<%question.options.each do |option| %>
+ 				<input type="radio" name="choice[<%=option.question_id%>]"><%=option.text%><br>
+ 		<%end%>
+ 		<%end%>
 	<%end%>
 	<%if @survey.owner_id == session[:user_id] %>
-	<a href="/surveys/<%=@survey.id%>/questions/new">Add Questions</a>
-	<!-- <form action="/surveys/<%=@survey.id%>/quesitons/new" method="post">
-		<input type="submit" value="Add Questions">
-	</form> --><br>
+	<a href="/surveys/<%=@survey.id%>/questions/new">Add Questions</a><br>
 	<form action="/surveys/<%=@survey.id%>/quesitons/new" method="post">
 		<input type="hidden" action="_method" value="delete">
-		<input type="submit" value="Delete Survey">
+		<input class="btn btn-secondary" type="submit" value="Delete Survey">
 	</form>
+</div>
 	<% else %>
 	<input type="submit" value="Submit" class="button">
 	<% end %>
+</div>

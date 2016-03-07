@@ -1,0 +1,12 @@
+
+<form action="/surveys/<%=@survey.id%>/questions/<%=@question.id%>" method="post">
+	<input type="hidden" name="_method" value="put">
+	Question: <input type="text" name="question_text" value="<%=@question.content%>">
+		<div id="options" >
+			<% @question.options.each do |option| %>
+				Option:<input type="text" name="original_option_text[<%=option.id%>][]" value=<%=option.text%>><br>
+			<% end %>
+		</div>
+		<input type="submit" value="Submit"><br>
+</form>
+	<button id="add-option">Add option</button>
