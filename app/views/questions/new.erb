@@ -1,0 +1,11 @@
+<div class="container">
+Add a question to the survey:<br>
+<body>
+	<form id="create_options" action="/surveys/<%=@survey.id%>/questions" method="post">
+	Question: <input type="text" name="question" ><br>
+	<div id="options"></div>
+	<input type="submit" value="Submit"><br>
+	</form>
+	<button id="add-option">Add option</button>
+</body>
+</div>

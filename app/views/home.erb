@@ -1,0 +1,20 @@
+
+<div class="container">
+	<div class="jumbotron" style="padding: 30px">
+<h4>Welcome <%= @user.email %>!</h4>
+<h5>Here are your surveys below</h5>
+<%if @user.surveys.empty? %>
+You haven't created any surveys yet. Create one below!
+<% else%>
+<% @surveys.each do |survey| %>
+<% if survey.owner_id == session[:user_id] %>
+<h4><a href="/surveys/<%=survey.id%>"><%= survey.title %></a></h4>
+<%end%>
+<%end%>
+<%end%>
+
+
+<h5><a href="/surveys/new">Create a survey</a></h5>
+<h5><a href="/surveys">Take a survey</a></h5>
+</div>
+</div>
